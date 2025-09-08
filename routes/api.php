@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/{id}', [ProductController::class, 'update']);
         Route::get('/{id}', [ProductController::class, 'get']);
         Route::delete('/{id}', [ProductController::class, 'destroy']);
+    });
+
+    Route::prefix('inventory')->group(function () {
+        Route::get('/', [InventoryController::class, 'get']);
+        Route::post('/', [InventoryController::class, 'store']);
+    });
+
+    Route::prefix('sales')->group(function () {
+        Route::post('/', [SaleController::class, 'store']);
+        Route::get('/{id}', [SaleController::class, 'get']);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);

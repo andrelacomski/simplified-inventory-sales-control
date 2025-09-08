@@ -237,7 +237,11 @@ return [
         'blood_type' => 'tipo sanguíneo',
         'birth_date' => 'data de nascimento',
         'cost_price' => 'preço de custo',
-        'sale_price' => 'preço de venda'
+        'sale_price' => 'preço de venda',
+        'inventory.*.product_id' => 'produto',
+        'inventory.*.quantity' => 'quantidade',
+        'inventory.*.cost_price' => 'preço de custo',
+        'inventory.*.sale_price' => 'preço de venda'
     ],
 
 ];
