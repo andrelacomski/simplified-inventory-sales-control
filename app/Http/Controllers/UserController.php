@@ -40,10 +40,10 @@ class UserController extends Controller {
             return response()->json(['error' => true, 'errors' => $errors], 422);
         }
 
-        $user = User::where('id', $id)->first();
+        $user = User::where('id', $id)->where('deleted_at')->first();
 
         if (!$user) {
-            return response()->json(['error' => true, 'errors' => ['Usuário não encontrado.']], 404);
+            return $this->returnNotFound();
         }
 
         $user->name = $request->name;
@@ -65,7 +65,7 @@ class UserController extends Controller {
         $user = User::where('id', $id)->whereNull('deleted_at')->first();
 
         if (!$user) {
-            return response()->json(['error' => true, 'errors' => ['Usuário não encontrado.']], 404);
+            return $this->returnNotFound();
         }
 
         return response()->json($user);
@@ -75,7 +75,7 @@ class UserController extends Controller {
         $user = User::where('id', $id)->whereNull('deleted_at')->first();
 
         if (!$user) {
-            return response()->json(['error' => true, 'errors' => ['Usuário não encontrado.']], 404);
+            return $this->returnNotFound();
         }
 
         $user->deleted_at = Carbon::now();
@@ -93,5 +93,9 @@ class UserController extends Controller {
         ];
 
         return response()->json(Utils::createPaginatedResult($request, User::class, $wheres, $columnsToFilter));
+    }
+
+    private function returnNotFound() {
+        return response()->json(['error' => true, 'errors' => ['Usuário não encontrado.']], 404);
     }
 }

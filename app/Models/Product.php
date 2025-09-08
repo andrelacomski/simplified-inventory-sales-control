@@ -12,7 +12,8 @@ class Product extends Model {
         'name',
         'description',
         'cost_price',
-        'sale_price'
+        'sale_price',
+        'deleted_at'
     ];
 
     public function inventory() {

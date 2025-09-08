@@ -235,7 +235,9 @@ return [
         'modality' => 'modalidade',
         'category' => 'categoria',
         'blood_type' => 'tipo sanguíneo',
-        'birth_date' => 'data de nascimento'
+        'birth_date' => 'data de nascimento',
+        'cost_price' => 'preço de custo',
+        'sale_price' => 'preço de venda'
     ],
 
 ];
