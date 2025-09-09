@@ -1,0 +1,1469 @@
+{
+	"info": {
+		"_postman_id": "1f4f58e9-9813-4b4d-a10b-c48441174c83",
+		"name": "Controle de Estoque e Vendas",
+		"description": "API REST para gerenciamento de módulo simplificado de controle de estoque e vendas de um ERP.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9066171"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());",
+							"",
+							"pm.collectionVariables.set(\"token\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 08 Sep 2025 03:02:21 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Administrador\",\n        \"email\": \"admin@cplug.com.br\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2025-09-08T02:44:09.000000Z\",\n        \"updated_at\": \"2025-09-08T02:44:09.000000Z\",\n        \"deleted_at\": null\n    },\n    \"token\": \"token_here\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[USER] - list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user?page=1&rows=10&globalFilter=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "rows",
+							"value": "10"
+						},
+						{
+							"key": "globalFilter",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[USER] - list",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user?page=1&rows=10&globalFilter=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "rows",
+									"value": "10"
+								},
+								{
+									"key": "globalFilter",
+									"value": ""
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 08 Sep 2025 03:07:16 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Administrador\",\n            \"email\": \"admin@cplug.com.br\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-09-08T02:44:09.000000Z\",\n            \"updated_at\": \"2025-09-08T03:04:31.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Fulano de tal\",\n            \"email\": \"fulano@cplug.com.br\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-09-08T03:03:12.000000Z\",\n            \"updated_at\": \"2025-09-08T03:03:12.000000Z\",\n            \"deleted_at\": null\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/user?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/user?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Anterior\",\n            \"page\": null,\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost:8000/api/user?page=1\",\n            \"label\": \"1\",\n            \"page\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Próximo &raquo;\",\n            \"page\": null,\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/user\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 2,\n    \"total\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "[USER] - get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[USER] - get",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 08 Sep 2025 03:01:51 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Administrador\",\n    \"email\": \"admin@cplug.com.br\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2025-09-08T02:44:09.000000Z\",\n    \"updated_at\": \"2025-09-08T02:44:09.000000Z\",\n    \"deleted_at\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "[USER] - create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Fulano de tal\",\n    \"email\": \"fulano@cplug.com.br\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[USER] - create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Fulano de tal\",\n    \"email\": \"fulano@cplug.com.br\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 08 Sep 2025 03:03:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"Fulano de tal\",\n    \"email\": \"fulano@cplug.com.br\",\n    \"updated_at\": \"2025-09-08T03:03:12.000000Z\",\n    \"created_at\": \"2025-09-08T03:03:12.000000Z\",\n    \"id\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "[USER] - update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Fulano de Tal\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[USER] - update",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Fulano de Tal\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 08 Sep 2025 03:03:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Fulano de Tal\",\n    \"email\": \"admin@cplug.com.br\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2025-09-08T02:44:09.000000Z\",\n    \"updated_at\": \"2025-09-08T03:03:54.000000Z\",\n    \"deleted_at\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "[USER] - delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PRODUCT] - list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/product?page=1&rows=10&globalFilter=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"product"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "rows",
+							"value": "10"
+						},
+						{
+							"key": "globalFilter",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[PRODUCT] - list",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/product?page=1&rows=10&globalFilter=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "rows",
+									"value": "10"
+								},
+								{
+									"key": "globalFilter",
+									"value": ""
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 08 Sep 2025 10:02:51 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 2,\n            \"sku\": \"PRO2\",\n            \"name\": \"Produto 2\",\n            \"description\": \"Descrição Produto 2\",\n            \"cost_price\": 4,\n            \"sale_price\": 6.5,\n            \"created_at\": \"2025-09-08T04:01:06.000000Z\",\n            \"updated_at\": \"2025-09-08T04:01:06.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 3,\n            \"sku\": \"PRO3\",\n            \"name\": \"Produto 3\",\n            \"description\": \"Descrição Produto 3\",\n            \"cost_price\": 3,\n            \"sale_price\": 5.3,\n            \"created_at\": \"2025-09-08T04:01:06.000000Z\",\n            \"updated_at\": \"2025-09-08T04:01:06.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 4,\n            \"sku\": \"PRO4\",\n            \"name\": \"Produto 4\",\n            \"description\": \"Descrição Produto 4\",\n            \"cost_price\": 2.2,\n            \"sale_price\": 5.8,\n            \"created_at\": \"2025-09-08T04:01:06.000000Z\",\n            \"updated_at\": \"2025-09-08T04:01:06.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 5,\n            \"sku\": \"PRO5\",\n            \"name\": \"Produto 5\",\n            \"description\": \"Descrição Produto 5\",\n            \"cost_price\": 2.1,\n            \"sale_price\": 5.8,\n            \"created_at\": \"2025-09-08T04:01:06.000000Z\",\n            \"updated_at\": \"2025-09-08T04:01:06.000000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 6,\n            \"sku\": \"PRO6\",\n            \"name\": \"Produto 6\",\n            \"description\": \"Descrição Produto 6\",\n            \"cost_price\": 5,\n            \"sale_price\": 7,\n            \"created_at\": \"2025-09-08T10:00:04.000000Z\",\n            \"updated_at\": \"2025-09-08T10:00:04.000000Z\",\n            \"deleted_at\": null\n        }\n    ],\n    \"first_page_url\": \"http://localhost:8000/api/product?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"http://localhost:8000/api/product?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Anterior\",\n            \"page\": null,\n            \"active\": false\n        },\n        {\n            \"url\": \"http://localhost:8000/api/product?page=1\",\n            \"label\": \"1\",\n            \"page\": 1,\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Próximo &raquo;\",\n            \"page\": null,\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"http://localhost:8000/api/product\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 5,\n    \"total\": 5\n}"
+				}
+			]
+		},
+		{
+			"name": "[PRODUCT] - get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/product/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[PRODUCT] - get",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/product/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 08 Sep 2025 09:56:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"sku\": \"PRO1\",\n    \"name\": \"Produto 1\",\n    \"description\": \"Descrição Produto 1\",\n    \"cost_price\": 2,\n    \"sale_price\": 5,\n    \"created_at\": \"2025-09-08T04:01:06.000000Z\",\n    \"updated_at\": \"2025-09-08T04:01:06.000000Z\",\n    \"deleted_at\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "[PRODUCT] - create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sku\": \"PRO1\",\n    \"name\": \"Produto 1\",\n    \"description\": \"Descrição Produto 1\",\n    \"cost_price\": 5.0,\n    \"sale_price\": 7.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/product",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[PRODUCT] - create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sku\": \"PRO1\",\n    \"name\": \"Produto 1\",\n    \"description\": \"Descrição Produto 1\",\n    \"cost_price\": 5.0,\n    \"sale_price\": 7.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 08 Sep 2025 10:00:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"sku\": \"PRO1\",\n    \"name\": \"Produto 1\",\n    \"description\": \"Descrição Produto 1\",\n    \"cost_price\": 5,\n    \"sale_price\": 7,\n    \"updated_at\": \"2025-09-08T10:00:04.000000Z\",\n    \"created_at\": \"2025-09-08T10:00:04.000000Z\",\n    \"id\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "[PRODUCT] - update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sku\": \"PRO1\",\n    \"name\": \"Produto 1\",\n    \"description\": \"Descrição Produto 1\",\n    \"cost_price\": 3.1,\n    \"sale_price\": 7.2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/product/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[PRODUCT] - update",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sku\": \"PRO1\",\n    \"name\": \"Produto 1\",\n    \"description\": \"Descrição Produto 1\",\n    \"cost_price\": 3.1,\n    \"sale_price\": 7.2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/product/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 08 Sep 2025 10:01:32 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"sku\": \"PRO1\",\n    \"name\": \"Produto 1\",\n    \"description\": \"Descrição Produto 1\",\n    \"cost_price\": 3.1,\n    \"sale_price\": 7.2,\n    \"created_at\": \"2025-09-08T04:01:06.000000Z\",\n    \"updated_at\": \"2025-09-08T10:01:32.000000Z\",\n    \"deleted_at\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "[PRODUCT] - delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/product/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[INVENTORY] - get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/inventory?page=1&rows=10",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"inventory"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "rows",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[INVENTORY] - create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"inventory\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"cost_price\": 5.0\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 10,\n            \"cost_price\": 8.0\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/inventory",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"inventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[SALE] - create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 2\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/sales",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sales"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[SALE] - create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 2\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/sales",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 00:37:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"total_amount\": 7.2,\n    \"total_cost\": 5,\n    \"total_profit\": 2.2,\n    \"status\": \"paid\",\n    \"updated_at\": \"2025-09-09T00:37:43.000000Z\",\n    \"created_at\": \"2025-09-09T00:37:43.000000Z\",\n    \"id\": 1,\n    \"sale_items\": [\n        {\n            \"id\": 1,\n            \"sale_id\": 3,\n            \"product_id\": 1,\n            \"quantity\": 2,\n            \"unit_price\": 7.2,\n            \"unit_cost\": 5,\n            \"created_at\": \"2025-09-09T00:37:43.000000Z\",\n            \"updated_at\": \"2025-09-09T00:37:43.000000Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "[SALE] - get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/sales/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sales",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[SALE] - get",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sales/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sales",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 09 Sep 2025 00:39:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"total_amount\": 7.2,\n    \"total_cost\": 5,\n    \"total_profit\": 2.2,\n    \"status\": \"paid\",\n    \"sale_date\": \"2025-09-09T00:37:43.000000Z\",\n    \"products\": [\n        {\n            \"id\": 1,\n            \"name\": \"Produto 1\",\n            \"quantity\": 2,\n            \"unit_price\": 7.2,\n            \"unit_cost\": 5,\n            \"unit_profit\": 2.2\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000/api"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": "admin@cplug.com.br"
+		},
+		{
+			"key": "password",
+			"value": "@cplug#1234!"
+		}
+	]
+}
