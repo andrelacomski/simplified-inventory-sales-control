@@ -241,7 +241,9 @@ return [
         'inventory.*.product_id' => 'produto',
         'inventory.*.quantity' => 'quantidade',
         'inventory.*.cost_price' => 'preço de custo',
-        'inventory.*.sale_price' => 'preço de venda'
+        'inventory.*.sale_price' => 'preço de venda',
+        'products.*.product_id' => 'produto',
+        'products.*.quantity' => 'quantidade',
     ],
 
 ];
