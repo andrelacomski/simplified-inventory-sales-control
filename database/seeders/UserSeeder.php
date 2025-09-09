@@ -11,10 +11,12 @@ class UserSeeder extends Seeder {
      * Start permissions, group and user
      */
     public function run(): void {
+        if (User::where('email', 'admin@cplug.com.br')->first()) return;
+
         $user = User::create([
             'name' => 'Administrador',
             'email' => 'admin@cplug.com.br',
-            'password' => bcrypt('@cplug#1234!'),
+            'password' => bcrypt('123456'),
         ]);
 
         $user->save();

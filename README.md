@@ -8,6 +8,7 @@ Projeto backend para gerenciar módulo simplificado de controle de estoque e ven
 - Faça a migração dos bancos de dados com o comando: `php artisan migrate`;
 - Inicie a base de dados com o comando: `php artisan db:seed`;
 - Para rodar o projeto: `composer run dev` ou `php artisan serve`;
+- Para rodar os testes: `php artisan test`;
 
 ## 🔀 Dependências e versões
 

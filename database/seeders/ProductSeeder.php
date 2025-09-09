@@ -11,6 +11,8 @@ class ProductSeeder extends Seeder {
      * Start permissions, group and user
      */
     public function run(): void {
+        if (Product::first()) return;
+
         $products = [
             [
                 'sku' => 'PRO1',

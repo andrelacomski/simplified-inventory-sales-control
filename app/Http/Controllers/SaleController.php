@@ -25,7 +25,7 @@ class SaleController extends Controller {
 
         $sale = $this->initSale();
 
-        $response = $this->proccessProducts($request, $sale->id);
+        $response = $this->processProducts($request, $sale->id);
 
         $sale = $this->updatePriceSale($sale, $response->total_amount, $response->total_cost);
 
@@ -103,7 +103,7 @@ class SaleController extends Controller {
         return $sale;
     }
 
-    private function proccessProducts(Request $request, $sale_id) {
+    private function processProducts(Request $request, $sale_id) {
         $error = false;
         $errors = [];
         $total_amount = 0;
